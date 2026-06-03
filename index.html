@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henry Chen</title>
+  <meta name="description" content="Henry Chen — Co-founder &amp; COO at PolarGrid. Builder in AI infrastructure, decentralized data, and emerging tech." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --text: #e8e8e8;
+      --muted: #888;
+      --accent: #4f8ef7;
+      --accent-dim: rgba(79, 142, 247, 0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    nav { padding: 28px 0 0; }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero { padding: 72px 0 56px; }
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+    }
+    .avatar {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a2a4a 0%, #0d1a33 100%);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .hero-content { flex: 1; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(79,142,247,0.2);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #3a7be0; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--muted); }
+    .btn-ghost:hover { border-color: #333; color: var(--text); }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    section { padding: 48px 0; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    /* ── Work ── */
+    .work-list { display: flex; flex-direction: column; }
+    .work-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .work-title a:hover { color: var(--accent); }
+    .work-role { font-size: 13px; color: var(--muted); }
+    .work-desc { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+    .work-period { font-size: 12px; color: #555; white-space: nowrap; padding-top: 2px; }
+
+    /* ── Investments ── */
+    .invest-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .invest-card {
+      background: var(--bg);
+      padding: 16px 18px;
+      transition: background 0.2s;
+    }
+    .invest-card:hover { background: var(--surface); }
+    .invest-card a { display: block; }
+    .invest-company {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+      transition: color 0.2s;
+    }
+    .invest-card:hover .invest-company { color: var(--accent); }
+    .invest-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    /* ── Connect ── */
+    .connect-grid { display: flex; flex-direction: column; }
+    .connect-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .connect-item:last-child { border-bottom: none; }
+    .connect-item:hover { color: var(--text); }
+    .connect-icon {
+      width: 32px; height: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .connect-icon svg { width: 14px; height: 14px; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: auto;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy { font-size: 12px; color: #444; }
+    .footer-loc { font-size: 12px; color: #444; }
+
+    @media (max-width: 520px) {
+      .hero-inner { flex-direction: column; gap: 20px; }
+      .avatar { width: 64px; height: 64px; font-size: 20px; }
+      .invest-grid { grid-template-columns: 1fr; }
+      .work-item { grid-template-columns: 1fr; }
+      .work-period { display: none; }
+      footer .container { flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <span class="nav-name">Henry Chen</span>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#investing">Investing</a>
+        <a href="#press">Press</a>
+        <a href="#connect">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="avatar" id="avatar">HC</div>
+          <div class="hero-content">
+            <div class="hero-tag">Ottawa, Canada</div>
+            <h1>Co-founder &amp; COO<br>at <span>PolarGrid</span></h1>
+            <p class="hero-sub">Building AI infrastructure for the edge — ultra-low-latency inference at scale. Founder, operator, and early-stage investor in AI, fintech, and SaaS.</p>
+            <div class="hero-actions">
+              <a href="mailto:henry@polargrid.ai" class="btn btn-primary">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+                Get in touch
+              </a>
+              <a href="https://polargrid.ai" target="_blank" rel="noopener" class="btn btn-ghost">
+                PolarGrid ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="work">
+      <div class="container">
+        <div class="section-label">Work</div>
+        <div class="work-list">
+
+          <div class="work-item">
+            <div>
+              <div class="work-title"><a href="https://polargrid.ai" target="_blank" rel="noopener">PolarGrid</a></div>
+              <div class="work-role">Co-founder &amp; COO</div>
+              <div class="work-desc">Inference Delivery Network — distributed edge GPU infrastructure for real-time AI. Sub-30ms latency, global edge nodes, voice-to-AI pipelines.</div>
+            </div>
+            <div class="work-period">2024 – Present</div>
+          </div>
+
+          <div class="work-item">
+            <div>
+              <div class="work-title"><a href="https://sapien.io" target="_blank" rel="noopener">Sapien</a></div>
+              <div class="work-role">Co-founder &amp; COO</div>
+              <div class="work-desc">Decentralized data labeling platform powering AI training at scale. Token-incentivized human annotation network.</div>
+            </div>
+            <div class="work-period">2023 – Present</div>
+          </div>
+
+          <div class="work-item">
+            <div>
+              <div class="work-title">Haller.ai</div>
+              <div class="work-role">Chief Product &amp; Operating Officer</div>
+              <div class="work-desc">Enterprise AI platform. Led product strategy and operations.</div>
+            </div>
+            <div class="work-period">Prior</div>
+          </div>
+
+          <div class="work-item">
+            <div>
+              <div class="work-title"><a href="https://resimpli.com" target="_blank" rel="noopener">REsimpli</a></div>
+              <div class="work-role">Chief Marketing Officer</div>
+              <div class="work-desc">Real estate investor software. Built and scaled growth from early stage.</div>
+            </div>
+            <div class="work-period">Prior</div>
+          </div>
+
+          <div class="work-item">
+            <div>
+              <div class="work-title">Matador Technologies</div>
+              <div class="work-role">Chief Marketing Officer</div>
+              <div class="work-desc">Fintech platform for the metals and commodities industry.</div>
+            </div>
+            <div class="work-period">Prior</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="investing">
+      <div class="container">
+        <div class="section-label">Angel Investing &amp; Advising</div>
+        <div class="invest-grid">
+
+          <div class="invest-card">
+            <div class="invest-company">Neobanc</div>
+            <div class="invest-desc">Next-gen digital banking infrastructure</div>
+          </div>
+
+          <div class="invest-card">
+            <a href="https://orchestra-data.com" target="_blank" rel="noopener">
+              <div class="invest-company">Orchestra</div>
+              <div class="invest-desc">Data infrastructure bridging human expertise &amp; AI training</div>
+            </a>
+          </div>
+
+          <div class="invest-card">
+            <div class="invest-company">Matador</div>
+            <div class="invest-desc">Fintech platform for metals &amp; commodities</div>
+          </div>
+
+          <div class="invest-card">
+            <a href="https://familiar.health" target="_blank" rel="noopener">
+              <div class="invest-company">Familiar</div>
+              <div class="invest-desc">Daily calls with loved ones in family voices — elder care AI</div>
+            </a>
+          </div>
+
+          <div class="invest-card">
+            <a href="https://argraide.com" target="_blank" rel="noopener">
+              <div class="invest-company">Argraide</div>
+              <div class="invest-desc">AI platform for educators to build mastery activities</div>
+            </a>
+          </div>
+
+          <div class="invest-card">
+            <a href="https://listli.ca" target="_blank" rel="noopener">
+              <div class="invest-company">Listli</div>
+              <div class="invest-desc">AI-powered CMAs for modern real estate listing presentations</div>
+            </a>
+          </div>
+
+          <div class="invest-card">
+            <a href="https://resimpli.com" target="_blank" rel="noopener">
+              <div class="invest-company">REsimpli</div>
+              <div class="invest-desc">All-in-one software for real estate investors</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="press">
+      <div class="container">
+        <div class="section-label">Press &amp; Writing</div>
+        <div class="work-list">
+
+          <div class="work-item">
+            <div>
+              <div class="work-title"><a href="https://www.npr.org/2025/06/29/nx-s1-5422330/the-race-to-create-ai-applications-is-creating-demand-for-training-data-in-china" target="_blank" rel="noopener">The race to create AI applications is creating demand for training data in China</a></div>
+              <div class="work-role">NPR</div>
+              <div class="work-desc">Featured on Sapien AI's data labeling operations in China — training data for autonomous driving and AI models in a post-DeepSeek world.</div>
+            </div>
+            <div class="work-period">Jun 2025</div>
+          </div>
+
+          <div class="work-item">
+            <div>
+              <div class="work-title"><a href="https://www.forbes.com/councils/forbesbusinesscouncil/2024/06/12/maximizing-your-startup-life-from-the-living-room/" target="_blank" rel="noopener">Maximizing Your Startup Life From The Living Room</a></div>
+              <div class="work-role">Forbes Business Council</div>
+              <div class="work-desc">How remote startup leaders can build culture, structure, and momentum without a physical office.</div>
+            </div>
+            <div class="work-period">Jun 2024</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="about">
+      <div class="container">
+        <div class="section-label">About</div>
+        <p class="about-text">
+          I'm a <strong>founder and operator</strong> focused on the intersection of AI infrastructure and real-world latency constraints. My work spans edge computing, decentralized systems, and building go-to-market engines from zero.
+          <br /><br />
+          Currently leading operations at <strong>PolarGrid</strong>, where we're turning the global edge into a live GPU inference network. Before that I co-founded <strong>Sapien</strong>, a decentralized data platform for AI training, and held executive roles across AI, fintech, and proptech.
+          <br /><br />
+          I also invest in and advise early-stage founders building in AI, fintech, real estate tech, and edtech. <strong>Forbes Technology Council member.</strong> Based in <strong>Ottawa, Canada</strong>.
+        </p>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="connect">
+      <div class="container">
+        <div class="section-label">Connect</div>
+        <div class="connect-grid">
+
+          <a href="mailto:henry@polargrid.ai" class="connect-item">
+            <div class="connect-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            </div>
+            henry@polargrid.ai
+          </a>
+
+          <a href="https://linkedin.com/in/henry-ch" target="_blank" rel="noopener" class="connect-item">
+            <div class="connect-icon">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            linkedin.com/in/henry-ch
+          </a>
+
+          <a href="https://polargrid.ai" target="_blank" rel="noopener" class="connect-item">
+            <div class="connect-icon">
+              <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            polargrid.ai
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span class="footer-copy">© 2025 Henry Chen</span>
+      <span class="footer-loc">Ottawa, Canada</span>
+    </div>
+  </footer>
+
+  <script>
+    // Swap initials for real photo if LinkedIn OG image loads
+    // To add a real headshot: replace the avatar div's innerHTML with <img src="YOUR_PHOTO_URL" alt="Henry Chen">
+  </script>
+
+</body>
+</html>
